@@ -1,13 +1,11 @@
 package handle
+
 import (
-	"net/http"
+	"taskhub/internal/pkg/resp"
 
 	"github.com/gin-gonic/gin"
 )
 
-func Healthz(c *gin.Context){
-	c.JSON(http.StatusOK,gin.H{
-		"code":0,
-		"message":"ok",
-	})
+func Healthz(c *gin.Context) {
+	resp.Ok(c, gin.H{"status": "ok"})
 }

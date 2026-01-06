@@ -40,12 +40,18 @@ taskhub/
 
 - 启动：
 
-  - go run ./cmd/api
+  - PORT=9000 ENV=prod go run ./cmd/api
 
       
 
 - 测试
 
   -   curl -s http://127.0.0.1:8080/healthz
+  
+
+## 6. 明天第一步
+1. 配置（env 读取配置）
+2. 结构化的日志（写控制台，文件等，可以控制）
+3. request_id()
 
     
