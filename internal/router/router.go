@@ -1,15 +1,20 @@
 package router
+
 import (
-	"github.com/gin-gonic/gin"
 	"taskhub/internal/handle"
+	"taskhub/internal/middleware"
+
+	"github.com/gin-gonic/gin"
 )
 
 func New() *gin.Engine {
 	r :=gin.New()
 
 	// middlewares
+	r.Use(middleware.RequestID())
+	r.Use(middleware.AccessLog())
 	r.Use(gin.Recovery())
-	r.Use(gin.Logger())
+
 
 	r.GET("/healthz",handle.Healthz)
 	return r

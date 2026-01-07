@@ -50,8 +50,19 @@ taskhub/
   
 
 ## 6. 明天第一步
-1. 配置（env 读取配置）
-2. 结构化的日志（写控制台，文件等，可以控制）
-3. request_id()
+
+## 7.中间件调用方式
+### 请求进入
+1.RequestID()，记录请求的RequestID,没有就生成一个
+2.AccessLog()，记录开始1时间，跳到Recovery()中间件
+3.Recovery()，捕获panic的话，status设置成500
+4.Handle 构造数据返回
+
+### 返回数据
+1.Handle 构造response数据返回
+2.Recovery()看有没有panic,有的话就捕获panic，status改为500
+3.AccessLog() 接收数据，记录耗时，读取需要的字段并记录结构化日志内容
+4.RequestID(),返回数据
+
 
     
