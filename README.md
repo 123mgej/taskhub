@@ -20,6 +20,13 @@
 - [x] 健康检查接口：
   - GET /healthz
   - 返回 {“code”:0,"message":ok}
+  
+- 需要启动 mysql：docker compose up -d mysql
+
+- 如何设置 DB_DSN DB_DSN='root:root@tcp(127.0.0.1:3306)/taskhub?charset=utf8mb4&parseTime=True&loc=Local'
+
+- dev 下自动 migrate
+
 
 
 
@@ -41,6 +48,8 @@ taskhub/
 - 启动：
 
   - PORT=9000 ENV=prod go run ./cmd/api
+  - ENV=dev PORT=9000 DB_DSN='root:root@tcp(127.0.0.1:3306)/taskhub?charset=utf8mb4&parseTime=True&loc=Local' go run ./cmd/api
+
 
       
 
@@ -50,6 +59,7 @@ taskhub/
   
 
 ## 6. 明天第一步
+1.。
 
 ## 7.中间件调用方式
 ### 请求进入
