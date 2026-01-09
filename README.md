@@ -30,6 +30,7 @@
 
 
 
+
 ## 4.项目结构
 
 ```bash
@@ -73,6 +74,34 @@ taskhub/
 2.Recovery()看有没有panic,有的话就捕获panic，status改为500
 3.AccessLog() 接收数据，记录耗时，读取需要的字段并记录结构化日志内容
 4.RequestID(),返回数据
+
+## 8.新增功能
+- 新增配置：
+  - JWT_SECRET / JWT_EXPIRE_MINUTES
+
+- 新增模块：
+
+  - password(bcrypt)
+
+  - token(jwt)
+
+  - middleware/auth
+
+- 新增接口：
+
+  - POST /api/v1/auth/register
+
+  - POST /api/v1/auth/login
+
+  - GET /api/v1/me（鉴权验证）
+
+- 常见坑记录：
+
+  - JWT_EXPIRE_MINUTES 未读导致 exp==iat（token 立刻过期）
+
+  - Bearer 前缀拼错导致 missing token
+
+  - MySQL datetime 零值/字段命名导致插入失败（create_at）
 
 
     
